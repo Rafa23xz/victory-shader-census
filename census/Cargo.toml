@@ -1,0 +1,19 @@
+[package]
+name = "shader-census"
+version = "0.1.0"
+edition = "2024"
+publish = false
+license = "GPL-3.0-or-later"
+description = "Censo local de shaders: um registro JSONL por programa nativo, cada etapa do victory-shader medida em separado"
+
+[dependencies]
+# Caminho da árvore do VIctory a medir: troque por outra árvore (worktree) para comparar estados.
+victory-shader = { path = "../../VIctory/crates/victory-shader", features = ["host"] }
+victory-game = { path = "../../VIctory/crates/victory-game" }
+blake3 = "1"
+memchr = "2"
+serde_json = "1"
+
+[profile.release]
+debug = 1
+panic = "unwind"
